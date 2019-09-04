@@ -16,16 +16,16 @@ public class ToDoListTest extends TestCase{
 	private Task task2;
 	private Task task3;
 	private ToDoList todolist;
-	
+	private Collection<Task> ct1;
 	public ToDoListTest() {
 		super();
 	}
 	@Before
 	 public void setUp() throws Exception{
 		//Initialise Test Fixtures
-		task1 = new Task("Task 1");
-		task2 = new Task("Task 2");
-		task3 = new Task("Task 3");
+		task1 = new Task("Task 1", false);
+		task2 = new Task("Task 2", false);
+		task3 = new Task("Task 3", false);
 		
 		todolist = new ToDoList();
 	}
@@ -58,15 +58,20 @@ public class ToDoListTest extends TestCase{
 	}
 	@Test
 	public void testSetCompletedTasks() {
-		fail("Not implemented yet");
+		assertNotNull(todolist);
+		todolist.addTask(task1);
+		assertFalse(todolist.getTask(task1.getDescription()).isComplete());
+		todolist.completeTask(task1.getDescription());
+		assertTrue(todolist.getTask(task1.getDescription()).isComplete());
 	}
 	@Test
-	public void getAllTasksTest() {
+	public void testGetAllTasks() {
 		assertNotNull(todolist);
 		todolist.addTask(task1);
 		todolist.addTask(task2);
-		todolist.getAllTasks();
-//		assertEquals(todolist);
-		
+		ct1 = todolist.getAllTasks();
+		assertEquals(ct1.size(),2);
+		assertTrue(ct1.contains(task1));
+		assertTrue(ct1.contains(task2));
 	}
 }
