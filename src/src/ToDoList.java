@@ -1,3 +1,5 @@
+package src;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -25,7 +27,6 @@ private HashMap<String, Task> tasks = new HashMap<String, Task>();
 	}
 	public Collection<Task> getAllTasks() {
 		return tasks.values();
-		return null;
 	}
 	public Collection<Task> getCompletedTasks() {
 		// Add code here
